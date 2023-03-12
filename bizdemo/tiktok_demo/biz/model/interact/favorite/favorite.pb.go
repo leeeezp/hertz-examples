@@ -200,8 +200,8 @@ type DouyinFavoriteListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	StatusCode int32    `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,required" form:"status_code" query:"status_code"` // 状态码，0-成功，其他值-失败
-	StatusMsg  string   `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`       // 返回状态描述
-	VideoList  []*Video `protobuf:"bytes,3,rep,name=video_list,json=videoList,proto3" json:"video_list" form:"video_list" query:"video_list"`                 // 用户点赞视频列表
+	StatusMsg  string   `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`      // 返回状态描述
+	VideoList  []*Video `protobuf:"bytes,3,rep,name=video_list,json=videoList,proto3" json:"video_list" form:"video_list" query:"video_list"`                // 用户点赞视频列表
 }
 
 func (x *DouyinFavoriteListResponse) Reset() {
@@ -263,7 +263,7 @@ type Video struct {
 	unknownFields protoimpl.UnknownFields
 
 	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" form:"id" query:"id"`                                                                    // 视频唯一标识
-	Author        User  `protobuf:"bytes,2,opt,name=author,proto3" json:"author,omitempty" form:"author" query:"author"`                                                     // 视频作者信息
+	Author        User   `protobuf:"bytes,2,opt,name=author,proto3" json:"author,omitempty" form:"author" query:"author"`                                                     // 视频作者信息
 	PlayUrl       string `protobuf:"bytes,3,opt,name=play_url,json=playUrl,proto3" json:"play_url,omitempty" form:"play_url" query:"play_url"`                                // 视频播放地址
 	CoverUrl      string `protobuf:"bytes,4,opt,name=cover_url,json=coverUrl,proto3" json:"cover_url,omitempty" form:"cover_url" query:"cover_url"`                           // 视频封面地址
 	FavoriteCount int64  `protobuf:"varint,5,opt,name=favorite_count,json=favoriteCount,proto3" json:"favorite_count,omitempty" form:"favorite_count" query:"favorite_count"` // 视频的点赞总数

@@ -38,20 +38,20 @@ type DouyinPublishListRequest struct {
 type DouyinPublishListResponse struct {
 
 	StatusCode int32   `json:"status_code,required" form:"status_code,required" query:"status_code,required"` // 状态码，0-成功，其他值-失败
-	StatusMsg  string  `json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`                        // 返回状态描述
-	VideoList  []Video `json:"video_list" form:"video_list" query:"video_list"`                                  // 用户发布的视频列表
+	StatusMsg  string  `json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`                     // 返回状态描述
+	VideoList  []Video `json:"video_list" form:"video_list" query:"video_list"`                               // 用户发布的视频列表
 }
 
 type Video struct {
 
-	Id            int64  `json:"id,required" form:"id,required" query:"id,required"`                                                                    // 视频唯一标识
-	Author        User   `json:"author,required" form:"author,required" query:"author,required"`                                                     // 视频作者信息
-	PlayUrl       string `json:"play_url,required" form:"play_url,required" query:"play_url,required"`                                // 视频播放地址
-	CoverUrl      string `json:"cover_url,required" form:"cover_url,required" query:"cover_url,required"`                           // 视频封面地址
+	Id            int64  `json:"id,required" form:"id,required" query:"id,required"`                                     // 视频唯一标识
+	Author        User   `json:"author,required" form:"author,required" query:"author,required"`                         // 视频作者信息
+	PlayUrl       string `json:"play_url,required" form:"play_url,required" query:"play_url,required"`                   // 视频播放地址
+	CoverUrl      string `json:"cover_url,required" form:"cover_url,required" query:"cover_url,required"`                // 视频封面地址
 	FavoriteCount int64  `json:"favorite_count,required" form:"favorite_count,required" query:"favorite_count,required"` // 视频的点赞总数
-	CommentCount  int64  `json:"comment_count,required" form:"comment_count,required" query:"comment_count,required"`      // 视频的评论总数
-	IsFavorite    bool   `json:"is_favorite,required" form:"is_favorite,required" query:"is_favorite,required"`                // true-已点赞，false-未点赞
-	Title         string `form:"title,required" query:"title,required"`                                                         // 视频标题
+	CommentCount  int64  `json:"comment_count,required" form:"comment_count,required" query:"comment_count,required"`    // 视频的评论总数
+	IsFavorite    bool   `json:"is_favorite,required" form:"is_favorite,required" query:"is_favorite,required"`          // true-已点赞，false-未点赞
+	Title         string `form:"title,required" query:"title,required"`                                                  // 视频标题
 }
 
 
