@@ -38,7 +38,7 @@ const (
 	FavoriteActionErrCode
 
 	MessageAddFailedErrCode
-	FriendListNoPremissionErrCode
+	FriendListNoPermissionErrCode
 
 	VideoIsNotExistErrCode
 	CommentIsNotExistErrCode
@@ -53,7 +53,7 @@ const (
 	FavoriteActionErrMsg     = "favorite add failed"
 
 	MessageAddFailedErrMsg    = "message add failed"
-	FriendListNoPremissionMsg = "You can't query his friend list"
+	FriendListNoPermissionMsg = "You can't query his friend list"
 	VideoIsNotExistErrMsg     = "video is not exist"
 	CommentIsNotExistErrMsg   = "comment is not exist"
 )
@@ -91,7 +91,7 @@ var (
 	FavoriteActionErr               = NewErrNo(FavoriteActionErrCode, FavoriteActionErrMsg)
 
 	MessageAddFailedErr       = NewErrNo(MessageAddFailedErrCode, MessageAddFailedErrMsg)
-	FriendListNoPremissionErr = NewErrNo(FriendListNoPremissionErrCode, FriendListNoPremissionMsg)
+	FriendListNoPermissionErr = NewErrNo(FriendListNoPermissionErrCode, FriendListNoPermissionMsg)
 	VideoIsNotExistErr        = NewErrNo(VideoIsNotExistErrCode, VideoIsNotExistErrMsg)
 	CommentIsNotExistErr      = NewErrNo(CommentIsNotExistErrCode, CommentIsNotExistErrMsg)
 )

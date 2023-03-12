@@ -46,7 +46,7 @@ func (s *FriendListService) GetFriendList(req *relation.DouyinRelationFriendList
 
 	// 只有本人才可以看本人的好友列表
 	if current_user_id.(int64) != user_id {
-		return nil, errno.FriendListNoPremissionErr
+		return nil, errno.FriendListNoPermissionErr
 	}
 
 	var friendList []*relation.FriendUser
