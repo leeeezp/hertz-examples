@@ -4,14 +4,14 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"offer_tiktok/biz/dal/db"
+	"offer_tiktok/pkg/constants"
+	"offer_tiktok/pkg/utils"
 	"sync"
 	"time"
 
-	"offer_tiktok/biz/dal/db"
 	feed "offer_tiktok/biz/model/basic/feed"
 	user_service "offer_tiktok/biz/service/user"
-	"offer_tiktok/pkg/constants"
-	"offer_tiktok/pkg/utils"
 
 	"github.com/cloudwego/hertz/pkg/app"
 )

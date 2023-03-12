@@ -2,21 +2,26 @@ package jwt
 
 import (
 	"context"
+	"offer_tiktok/biz/model/basic/user"
+	"offer_tiktok/biz/pack"
+	"offer_tiktok/pkg/errno"
+	"offer_tiktok/pkg/utils"
+	"time"
+
+	db "offer_tiktok/biz/dal/db"
+
+	_ "offer_tiktok/pkg/errno"
+
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"github.com/hertz-contrib/jwt"
-	db "offer_tiktok/biz/dal/db"
-	"offer_tiktok/biz/model/basic/user"
-	"offer_tiktok/biz/pack"
-	"offer_tiktok/pkg/errno"
-	_ "offer_tiktok/pkg/errno"
-	"offer_tiktok/pkg/utils"
-	"time"
 )
 
-var JwtMiddleware *jwt.HertzJWTMiddleware
-var identity = "user_id"
+var (
+	JwtMiddleware *jwt.HertzJWTMiddleware
+	identity      = "user_id"
+)
 
 func Init() {
 	JwtMiddleware, _ = jwt.New(&jwt.HertzJWTMiddleware{
@@ -72,5 +77,4 @@ func Init() {
 			return resp.StatusMsg
 		},
 	})
-
 }

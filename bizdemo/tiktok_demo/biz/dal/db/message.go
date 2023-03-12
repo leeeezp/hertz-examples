@@ -34,7 +34,7 @@ func AddNewMessage(message *Messages) (bool, error) {
 	return true, nil
 }
 
-func GetMessageByIdPair(user_id1 int64, user_id2 int64, pre_msg_time time.Time) ([]Messages, error) {
+func GetMessageByIdPair(user_id1, user_id2 int64, pre_msg_time time.Time) ([]Messages, error) {
 	exist, err := QueryUserById(user_id1)
 	if exist == nil || err != nil {
 		return nil, errno.UserIsNotExistErr
@@ -53,7 +53,7 @@ func GetMessageByIdPair(user_id1 int64, user_id2 int64, pre_msg_time time.Time) 
 	return messages, nil
 }
 
-func GetLatestMessageByIdPair(user_id1 int64, user_id2 int64) (*Messages, error) {
+func GetLatestMessageByIdPair(user_id1, user_id2 int64) (*Messages, error) {
 	exist, err := QueryUserById(user_id1)
 	if exist == nil || err != nil {
 		return nil, errno.UserIsNotExistErr

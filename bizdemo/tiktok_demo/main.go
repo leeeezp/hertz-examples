@@ -4,13 +4,14 @@ package main
 
 import (
 	"context"
+	"offer_tiktok/biz/dal"
+	"offer_tiktok/biz/mw/jwt"
+	"offer_tiktok/biz/mw/minio"
+
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/hertz-contrib/reverseproxy"
-	"offer_tiktok/biz/dal"
-	"offer_tiktok/biz/mw/jwt"
-	"offer_tiktok/biz/mw/minio"
 )
 
 // 将hertz server中路由符合/src/*name的通配路由进行转发

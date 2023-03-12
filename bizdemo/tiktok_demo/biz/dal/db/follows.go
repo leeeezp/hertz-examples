@@ -1,10 +1,11 @@
 package db
 
 import (
-	redis "offer_tiktok/biz/mw/redis"
 	"offer_tiktok/pkg/constants"
 	"strconv"
 	"time"
+
+	redis "offer_tiktok/biz/mw/redis"
 
 	"gorm.io/gorm"
 )
@@ -30,7 +31,7 @@ func AddNewFollow(follow *Follows) (bool, error) {
 	// }
 	// return true, nil
 
-	//version 2.0
+	// version 2.0
 	// 先写数据库，然后删除缓存
 	err := DB.Create(follow).Error
 	if err != nil {
@@ -86,7 +87,7 @@ func QueryFollowExist(follow *Follows) (bool, error) {
 
 	// version2.0 add redis
 	if exist, err := redis.RdbFollowing.SIsMember(strconv.Itoa(int(follow.UserId)), follow.FollowerId).Result(); exist {
-		//fmt.Printf("在redis中获取到user_id:%d关注了user:%d的关系\n", follow.UserId, follow.FollowerId)
+		// fmt.Printf("在redis中获取到user_id:%d关注了user:%d的关系\n", follow.UserId, follow.FollowerId)
 		redis.RdbFollowing.Expire(strconv.Itoa(int(follow.UserId)), redis.ExpireTime)
 		return true, err
 	}
@@ -117,7 +118,7 @@ func GetFollowCount(user_id int64) (int64, error) {
 	if count, err := redis.RdbFollowing.SCard(strconv.Itoa(int(user_id))).Result(); count > 0 {
 		// 更新过期时间。
 		redis.RdbFollowing.Expire(strconv.Itoa(int(user_id)), redis.ExpireTime)
-		//fmt.Printf("在redis中获取到user_id:%d的关注数%d\n", user_id, count)
+		// fmt.Printf("在redis中获取到user_id:%d的关注数%d\n", user_id, count)
 		return count, err
 	}
 	// 缓存中没有，去数据库查找并更新缓存
@@ -134,7 +135,7 @@ func GetFollowCount(user_id int64) (int64, error) {
 // 每次都添加一个-1是为了保证redis中总有这个值
 func AddNewFollowRelationToRedis(user_id int64, followings []int64) {
 	for _, following := range followings {
-		//redis.RdbFollowing.SAdd(strconv.Itoa(int(user_id)), -1)
+		// redis.RdbFollowing.SAdd(strconv.Itoa(int(user_id)), -1)
 		redis.RdbFollowing.SAdd(strconv.Itoa(int(user_id)), following)
 	}
 	// 更新过期时间，保持数据热度
@@ -156,7 +157,7 @@ func GetFolloweeCount(follower_id int64) (int64, error) {
 	if count, err := redis.RdbFollower.SCard(strconv.Itoa(int(follower_id))).Result(); count > 0 {
 		// 更新过期时间。
 		redis.RdbFollower.Expire(strconv.Itoa(int(follower_id)), redis.ExpireTime)
-		//fmt.Printf("在redis中获取到user_id:%d的粉丝数%d\n", follower_id, count)
+		// fmt.Printf("在redis中获取到user_id:%d的粉丝数%d\n", follower_id, count)
 		return count, err
 	}
 	// 缓存中没有，去数据库查找并更新缓存
@@ -222,7 +223,7 @@ func CheckFollowRelationExist(follow *Follows) (bool, error) {
 
 	// version2.0 add redis
 	if exist, err := redis.RdbFollowing.SIsMember(strconv.Itoa(int(follow.UserId)), follow.FollowerId).Result(); exist {
-		//fmt.Printf("在redis中获取到user_id:%d关注了user:%d的关系\n", follow.UserId, follow.FollowerId)
+		// fmt.Printf("在redis中获取到user_id:%d关注了user:%d的关系\n", follow.UserId, follow.FollowerId)
 		redis.RdbFollowing.Expire(strconv.Itoa(int(follow.UserId)), redis.ExpireTime)
 		return true, err
 	}
@@ -239,7 +240,7 @@ func CheckFollowRelationExist(follow *Follows) (bool, error) {
 	return true, nil
 }
 
-func addRelationToRedis(user_id int, follow_id int) {
+func addRelationToRedis(user_id, follow_id int) {
 	redis.RdbFollowing.SAdd(strconv.Itoa(user_id), follow_id)
 	redis.RdbFollowing.Expire(strconv.Itoa(user_id), redis.ExpireTime)
 }

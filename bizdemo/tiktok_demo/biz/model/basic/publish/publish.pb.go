@@ -12,38 +12,28 @@ import (
 )
 
 type DouyinPublishActionRequest struct {
-
-	Token string `json:"token,required" form:"token,required" query:"token,required"` // 用户鉴权token
-	Data  *multipart.FileHeader  `form:"data,required"`     // 视频数据
-	Title string `json:"title,required" form:"title,required" query:"title,required"` // 视频标题
+	Token string                `json:"token,required" form:"token,required" query:"token,required"` // 用户鉴权token
+	Data  *multipart.FileHeader `form:"data,required"`                                               // 视频数据
+	Title string                `json:"title,required" form:"title,required" query:"title,required"` // 视频标题
 }
-
 
 type DouyinPublishActionResponse struct {
-
 	StatusCode int32  `json:"status_code,required" form:"status_code,required" query:"status_code,required"` // 状态码，0-成功，其他值-失败
-	StatusMsg  string `json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`                        // 返回状态描述
+	StatusMsg  string `json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`                     // 返回状态描述
 }
-
-
 
 type DouyinPublishListRequest struct {
-
 	UserId int64  `json:"user_id,required" form:"user_id,required" query:"user_id,required"` // 用户id
-	Token  string `json:"token,required" form:"token,required" query:"token,required"`                      // 用户鉴权token
+	Token  string `json:"token,required" form:"token,required" query:"token,required"`       // 用户鉴权token
 }
 
-
-
 type DouyinPublishListResponse struct {
-
 	StatusCode int32   `json:"status_code,required" form:"status_code,required" query:"status_code,required"` // 状态码，0-成功，其他值-失败
 	StatusMsg  string  `json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`                     // 返回状态描述
 	VideoList  []Video `json:"video_list" form:"video_list" query:"video_list"`                               // 用户发布的视频列表
 }
 
 type Video struct {
-
 	Id            int64  `json:"id,required" form:"id,required" query:"id,required"`                                     // 视频唯一标识
 	Author        User   `json:"author,required" form:"author,required" query:"author,required"`                         // 视频作者信息
 	PlayUrl       string `json:"play_url,required" form:"play_url,required" query:"play_url,required"`                   // 视频播放地址
@@ -53,7 +43,6 @@ type Video struct {
 	IsFavorite    bool   `json:"is_favorite,required" form:"is_favorite,required" query:"is_favorite,required"`          // true-已点赞，false-未点赞
 	Title         string `form:"title,required" query:"title,required"`                                                  // 视频标题
 }
-
 
 type User struct {
 	Id              int64  `json:"id,required" form:"id,required" query:"id,required"`                      // 用户id
@@ -68,5 +57,3 @@ type User struct {
 	WorkCount       int64  `json:"work_count" form:"work_count" query:"work_count"`
 	FavoriteCount   int64  `json:"favorite_count" form:"favorite_count" query:"favorite_count"`
 }
-
-

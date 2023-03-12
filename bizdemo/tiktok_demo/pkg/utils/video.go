@@ -3,13 +3,14 @@ package utils
 import (
 	"context"
 	"fmt"
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"offer_tiktok/biz/mw/minio"
 	"strings"
+
+	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 )
 
-func NewFileName(user_id int64, time int64) string {
+func NewFileName(user_id, time int64) string {
 	return fmt.Sprintf("%d.%d", user_id, time)
 }
 

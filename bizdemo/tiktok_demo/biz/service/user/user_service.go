@@ -3,10 +3,11 @@ package service
 import (
 	"context"
 	"offer_tiktok/biz/dal/db"
-	user "offer_tiktok/biz/model/basic/user"
 	"offer_tiktok/pkg/constants"
 	"offer_tiktok/pkg/errno"
 	"offer_tiktok/pkg/utils"
+
+	user "offer_tiktok/biz/model/basic/user"
 
 	"github.com/cloudwego/hertz/pkg/app"
 )
@@ -58,7 +59,7 @@ func (s *UserService) UserInfo(req *user.DouyinUserRequest) (*user.User, error) 
  * @param {int64} userId 当前登陆用户 id，可能为 0
  * @return {user.User}
  */
-func (s *UserService) GetUserInfo(query_user_id int64, user_id int64) (*user.User, error) {
+func (s *UserService) GetUserInfo(query_user_id, user_id int64) (*user.User, error) {
 	u := &user.User{}
 
 	dbUser, err := db.QueryUserById(query_user_id)

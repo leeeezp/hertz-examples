@@ -4,11 +4,13 @@ package user
 
 import (
 	"context"
-	user "offer_tiktok/biz/model/basic/user"
 	"offer_tiktok/biz/mw/jwt"
 	"offer_tiktok/biz/pack"
-	service "offer_tiktok/biz/service/user"
 	"offer_tiktok/pkg/errno"
+
+	user "offer_tiktok/biz/model/basic/user"
+
+	service "offer_tiktok/biz/service/user"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"

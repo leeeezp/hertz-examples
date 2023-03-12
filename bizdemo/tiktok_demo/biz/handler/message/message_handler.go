@@ -4,11 +4,12 @@ package message
 
 import (
 	"context"
+	"offer_tiktok/biz/pack"
+	"offer_tiktok/pkg/errno"
 
 	message "offer_tiktok/biz/model/social/message"
-	"offer_tiktok/biz/pack"
+
 	message_service "offer_tiktok/biz/service/message"
-	"offer_tiktok/pkg/errno"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"

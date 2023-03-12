@@ -3,8 +3,9 @@
 package Relation
 
 import (
-	"github.com/cloudwego/hertz/pkg/app"
 	"offer_tiktok/biz/mw/jwt"
+
+	"github.com/cloudwego/hertz/pkg/app"
 )
 
 func rootMw() []app.HandlerFunc {

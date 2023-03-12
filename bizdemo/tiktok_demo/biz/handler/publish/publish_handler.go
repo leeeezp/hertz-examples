@@ -4,12 +4,15 @@ package publish
 
 import (
 	"context"
+	"offer_tiktok/biz/pack"
+	"offer_tiktok/pkg/errno"
+
+	publish "offer_tiktok/biz/model/basic/publish"
+
+	service "offer_tiktok/biz/service/publish"
+
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	publish "offer_tiktok/biz/model/basic/publish"
-	"offer_tiktok/biz/pack"
-	service "offer_tiktok/biz/service/publish"
-	"offer_tiktok/pkg/errno"
 )
 
 // PublishAction .
@@ -48,7 +51,6 @@ func PublishList(ctx context.Context, c *app.RequestContext) {
 	}
 
 	resp, err := service.NewPublishService(ctx, c).PublishList(&req)
-
 	if err != nil {
 		bresp := pack.BuildBaseResp(err)
 		resp.StatusCode = bresp.StatusCode

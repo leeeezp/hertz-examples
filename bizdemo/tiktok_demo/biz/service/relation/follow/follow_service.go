@@ -3,9 +3,10 @@ package service
 import (
 	"context"
 	"offer_tiktok/biz/dal/db"
+	"offer_tiktok/pkg/errno"
+
 	relation "offer_tiktok/biz/model/social/relation"
 	user_service "offer_tiktok/biz/service/user"
-	"offer_tiktok/pkg/errno"
 
 	"github.com/cloudwego/hertz/pkg/app"
 )
@@ -20,7 +21,7 @@ type RelationService struct {
 	c   *app.RequestContext
 }
 
-//  new RelationService
+// new RelationService
 func NewRelationService(ctx context.Context, c *app.RequestContext) *RelationService {
 	return &RelationService{ctx: ctx, c: c}
 }
@@ -57,7 +58,7 @@ func (r *RelationService) FollowAction(req *relation.DouyinRelationActionRequest
 			return false, errno.FollowRelationAlreadyExistErr
 		}
 		flag, err = db.AddNewFollow(new_follow_relation)
-		//增加redis缓存功能
+		// 增加redis缓存功能
 	} else {
 		if !follow_exist {
 			return false, errno.FollowRelationNotExistErr

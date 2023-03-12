@@ -4,10 +4,12 @@ package comment
 
 import (
 	"context"
-	comment "offer_tiktok/biz/model/interact/comment"
 	"offer_tiktok/biz/pack"
-	comment_service "offer_tiktok/biz/service/comment"
 	"offer_tiktok/pkg/errno"
+
+	comment "offer_tiktok/biz/model/interact/comment"
+
+	comment_service "offer_tiktok/biz/service/comment"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
@@ -29,7 +31,6 @@ func CommentAction(ctx context.Context, c *app.RequestContext) {
 	}
 
 	comment_, err := comment_service.NewCommentService(ctx, c).AddNewComment(&req)
-
 	if err != nil {
 		resp := pack.BuildBaseResp(err)
 		c.JSON(consts.StatusOK, comment.DouyinCommentActionResponse{

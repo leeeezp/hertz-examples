@@ -1,9 +1,10 @@
 package redis
 
 import (
-	"github.com/go-redis/redis/v7"
 	"offer_tiktok/pkg/constants"
 	"time"
+
+	"github.com/go-redis/redis/v7"
 )
 
 var (

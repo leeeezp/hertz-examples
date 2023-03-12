@@ -89,7 +89,7 @@ type DouyinFavoriteActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	StatusCode int32  `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,required" form:"status_code" query:"status_code"` // 状态码，0-成功，其他值-失败
-	StatusMsg  string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`       // 返回状态描述
+	StatusMsg  string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty" form:"status_msg" query:"status_msg"`      // 返回状态描述
 }
 
 func (x *DouyinFavoriteActionResponse) Reset() {
@@ -306,8 +306,6 @@ func (x *Video) GetId() int64 {
 	return 0
 }
 
-
-
 func (x *Video) GetPlayUrl() string {
 	if x != nil {
 		return x.PlayUrl
@@ -355,11 +353,11 @@ type User struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" form:"id" query:"id"`                                                                    // 用户id
-	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" form:"name" query:"name"`                                                             // 用户名称
-	FollowCount   int64  `protobuf:"varint,3,opt,name=follow_count,json=followCount,proto3" json:"follow_count,omitempty" form:"follow_count" query:"follow_count"`           // 关注总数
-	FollowerCount int64  `protobuf:"varint,4,opt,name=follower_count,json=followerCount,proto3" json:"follower_count,omitempty" form:"follower_count" query:"follower_count"` // 粉丝总数
-	IsFollow      bool   `protobuf:"varint,5,opt,name=is_follow,json=isFollow,proto3" json:"is_follow,omitempty" form:"is_follow" query:"is_follow"`                          // true-已关注，false-未关注
+	Id              int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" form:"id" query:"id"`                                                                    // 用户id
+	Name            string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" form:"name" query:"name"`                                                             // 用户名称
+	FollowCount     int64  `protobuf:"varint,3,opt,name=follow_count,json=followCount,proto3" json:"follow_count,omitempty" form:"follow_count" query:"follow_count"`           // 关注总数
+	FollowerCount   int64  `protobuf:"varint,4,opt,name=follower_count,json=followerCount,proto3" json:"follower_count,omitempty" form:"follower_count" query:"follower_count"` // 粉丝总数
+	IsFollow        bool   `protobuf:"varint,5,opt,name=is_follow,json=isFollow,proto3" json:"is_follow,omitempty" form:"is_follow" query:"is_follow"`                          // true-已关注，false-未关注
 	Avatar          string `json:"avatar" form:"avatar" query:"avatar"`
 	BackgroundImage string `json:"background_image" form:"background_image" query:"background_image"`
 	Signature       string `json:"signature" form:"signature" query:"signature"`
@@ -549,5 +547,3 @@ var file_favorite_proto_depIdxs = []int32{
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
 }
-
-

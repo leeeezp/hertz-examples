@@ -36,10 +36,9 @@ func DeleteFavorite(favorite *Favorites) (bool, error) {
 	return true, nil
 }
 
-func QueryFavoriteExist(video_id int64, user_id int64) (bool, error) {
+func QueryFavoriteExist(video_id, user_id int64) (bool, error) {
 	var sum int64
 	err := DB.Model(&Favorites{}).Where("video_id = ? AND user_id = ?", video_id, user_id).Count(&sum).Error
-
 	if err != nil {
 		return false, err
 	}

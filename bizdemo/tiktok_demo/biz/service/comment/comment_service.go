@@ -2,12 +2,14 @@ package service
 
 import (
 	"context"
-	"github.com/cloudwego/hertz/pkg/app"
 	"log"
 	"offer_tiktok/biz/dal/db"
 	"offer_tiktok/biz/model/interact/comment"
-	user_service "offer_tiktok/biz/service/user"
 	"offer_tiktok/pkg/errno"
+
+	user_service "offer_tiktok/biz/service/user"
+
+	"github.com/cloudwego/hertz/pkg/app"
 )
 
 type CommentService struct {
@@ -54,7 +56,7 @@ func (c *CommentService) AddNewComment(req *comment.DouyinCommentActionRequest) 
 	}
 }
 
-func (c *CommentService) getUserInfoById(current_user_id int64, user_id int64) (*comment.User, error) {
+func (c *CommentService) getUserInfoById(current_user_id, user_id int64) (*comment.User, error) {
 	u, err := user_service.NewUserService(c.ctx, c.c).GetUserInfo(user_id, current_user_id)
 	var comment_user *comment.User
 	if err != nil {

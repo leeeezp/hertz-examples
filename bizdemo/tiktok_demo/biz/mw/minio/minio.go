@@ -42,19 +42,19 @@ func PutToBucket(ctx context.Context, bucketName string, file *multipart.FileHea
 	return info, err
 }
 
-func GetObjURL(ctx context.Context, bucketName string, filename string) (u *url.URL, err error) {
+func GetObjURL(ctx context.Context, bucketName, filename string) (u *url.URL, err error) {
 	exp := time.Hour * 24
 	reqParams := make(url.Values)
 	u, err = Client.PresignedGetObject(ctx, bucketName, filename, exp, reqParams)
 	return u, err
 }
 
-func PutToBucketByBuf(ctx context.Context, bucketName string, filename string, buf *bytes.Buffer) (info minio.UploadInfo, err error) {
+func PutToBucketByBuf(ctx context.Context, bucketName, filename string, buf *bytes.Buffer) (info minio.UploadInfo, err error) {
 	info, err = Client.PutObject(ctx, bucketName, filename, buf, int64(buf.Len()), minio.PutObjectOptions{})
 	return info, err
 }
 
-func PutToBucketByFilePath(ctx context.Context, bucketName string, filename string, filepath string) (info minio.UploadInfo, err error) {
+func PutToBucketByFilePath(ctx context.Context, bucketName, filename, filepath string) (info minio.UploadInfo, err error) {
 	info, err = Client.FPutObject(ctx, bucketName, filename, filepath, minio.PutObjectOptions{})
 	return info, err
 }
@@ -63,7 +63,8 @@ func Init() {
 	ctx := context.Background()
 	Client, err = minio.New(constants.MinioEndPoint, &minio.Options{
 		Creds:  credentials.NewStaticV4(constants.MinioAccessKeyID, constants.MinioSecretAccessKey, ""),
-		Secure: constants.MiniouseSSL})
+		Secure: constants.MiniouseSSL,
+	})
 	if err != nil {
 		log.Fatalln("minio连接错误: ", err)
 	}

@@ -4,10 +4,10 @@ package relation
 
 import (
 	"context"
-
-	relation "offer_tiktok/biz/model/social/relation"
 	"offer_tiktok/biz/pack"
 	"offer_tiktok/pkg/errno"
+
+	relation "offer_tiktok/biz/model/social/relation"
 
 	follow_service "offer_tiktok/biz/service/relation/follow"
 	followerList_service "offer_tiktok/biz/service/relation/follower"
@@ -23,7 +23,7 @@ func RelationAction(ctx context.Context, c *app.RequestContext) {
 	var err error
 	var req relation.DouyinRelationActionRequest
 	err = c.BindAndValidate(&req)
-	//hlog.CtxInfof(ctx, "RelationAction: usr_token: %s follower_id: %d action_type: %d", req.Token, req.ToUserId, req.ActionType)
+	// hlog.CtxInfof(ctx, "RelationAction: usr_token: %s follower_id: %d action_type: %d", req.Token, req.ToUserId, req.ActionType)
 	if err != nil {
 		resp := pack.BuildBaseResp(err)
 		c.JSON(consts.StatusOK, relation.DouyinRelationActionResponse{
@@ -56,7 +56,7 @@ func RelationFollowList(ctx context.Context, c *app.RequestContext) {
 	var req relation.DouyinRelationFollowListRequest
 	err = c.BindAndValidate(&req)
 
-	//hlog.CtxInfof(ctx, "RelationGetFollowList: usr_id: %d user_token: %s", req.UserId, req.Token)
+	// hlog.CtxInfof(ctx, "RelationGetFollowList: usr_id: %d user_token: %s", req.UserId, req.Token)
 	if err != nil {
 		resp := pack.BuildBaseResp(err)
 		c.JSON(consts.StatusOK, relation.DouyinRelationFollowListResponse{

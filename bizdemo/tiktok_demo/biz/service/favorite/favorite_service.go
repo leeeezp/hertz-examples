@@ -4,10 +4,11 @@ import (
 	"context"
 	"offer_tiktok/biz/dal/db"
 	"offer_tiktok/biz/model/basic/feed"
-	favorite "offer_tiktok/biz/model/interact/favorite"
-	feed_service "offer_tiktok/biz/service/feed"
 	"offer_tiktok/pkg/constants"
 	"offer_tiktok/pkg/errno"
+
+	favorite "offer_tiktok/biz/model/interact/favorite"
+	feed_service "offer_tiktok/biz/service/feed"
 
 	"github.com/cloudwego/hertz/pkg/app"
 )
@@ -31,7 +32,7 @@ func (r *FavoriteService) FavoriteAction(req *favorite.DouyinFavoriteActionReque
 	// 颁发和验证token的行为均交给jwt处理，当发送到handler层时，默认已通过验证
 	// 只需要检查参数VideoID的合法性
 
-	_, err = db.CheckVideoExistById(req.VideoId) //zheli
+	_, err = db.CheckVideoExistById(req.VideoId) // zheli
 	if err != nil {
 		return false, err
 	}

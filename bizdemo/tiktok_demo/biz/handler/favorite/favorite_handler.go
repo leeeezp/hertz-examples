@@ -4,11 +4,12 @@ package favorite
 
 import (
 	"context"
+	"offer_tiktok/biz/pack"
+	"offer_tiktok/pkg/errno"
 
 	favorite "offer_tiktok/biz/model/interact/favorite"
-	"offer_tiktok/biz/pack"
+
 	favorite_service "offer_tiktok/biz/service/favorite"
-	"offer_tiktok/pkg/errno"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
@@ -66,7 +67,6 @@ func FavoriteList(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 	favoritelist, err := favorite_service.NewFavoriteService(ctx, c).GetFavoriteList(&req)
-
 	if err != nil {
 		c.String(consts.StatusBadRequest, err.Error())
 		return
